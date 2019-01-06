@@ -1,0 +1,66 @@
+-- We can create Kubenetes resources using Kubectl command direcltly or using YAML/JSON file.
+-- The advantage of YAML files is it can be track in version control
+
+## Create Deployment Script
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+
+
+## To run the yaml file, we can use any method from below command to create resource.
+~ kubectl create -f <File_Name>
+OR
+~ kubectl apply -f <FIle_Name>
+
+## Get deployment details
+~ kubectl get deployment -o wide
+OR
+~ kubectl get deploy -o wide
+
+
+# Create service to access the app.
+-- Service is an endpoint thats expose the ports to outside and maps to container Port.
+
+kind: Service    // resource type you will create
+apiVersion: v1
+metadata:
+  name: my-service // Name of service
+spec:
+  selector:
+    app: nginx    // This is to filter
+  type: LoadBalancer  // There are different types of services based on how loads will be distributed
+  ports:
+  - name: my-nginx-port  //This is name of port
+    port: 8080  //Whenever we access with 8080 - it will be map to below port 80.
+    targetPort: 80 
+
+## Create service with below command:
+~ kubectl create -f <File_Name>
+OR
+~ kubectl apply -f <FIle_Name>
+
+## Get deployment details
+~ kubectl get service -o wide
+OR
+~ kubectl get svc -o wide
+
+

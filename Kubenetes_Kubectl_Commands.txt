@@ -1,0 +1,46 @@
+## Kubernetes COmmand
+
+Kubernetes manifests can be defined in json or yaml. The file extension .yaml, .yml, and .json can be used.
+
+----CREATING OBJECTS -----
+
+# create resource(s)
+kubectl create -f ./my-manifest.yaml 
+   
+# create from multiple files       
+kubectl create -f ./my1.yaml -f ./my2.yaml  
+
+# create resource(s) in all manifest files in dir  
+kubectl create -f ./dir                      
+
+# create resource(s) from url
+kubectl create -f https://git.io/vPieo   
+
+# start a single instance of nginx
+kubectl run nginx --image=nginx  
+
+# get the documentation for pod and svc manifests          
+kubectl explain pods,svc   
+
+-------VIEWING OBJECTS ----------
+# List all services in the namespace
+kubectl get services      
+
+# List all pods in all namespaces                   
+kubectl get pods --all-namespaces  
+
+# List all pods in the namespace, with more details           
+kubectl get pods -o wide     
+
+# List a particular deployment                 
+kubectl get deployment my-dep   
+
+# List all pods in the namespace, including uninitialized ones
+kubectl get pods --include-uninitialized      
+
+# Describe commands with verbose output
+kubectl describe nodes my-node
+kubectl describe pods my-pod
+
+# List Services Sorted by Name
+kubectl get services --sort-by=.metadata.name

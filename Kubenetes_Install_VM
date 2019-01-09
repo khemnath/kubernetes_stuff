@@ -1,0 +1,25 @@
+
+1.) Install required packages to add Docker repository with the following command
+   ~ apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+
+2.) Download and add Dockerâ€™s GPG key with the following command
+   ~ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+3.) Add Docker repository with the following command
+   ~ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+
+4.) Now, update the repository and install Docker with the following command
+    ~ apt-get update -y
+    ~ apt-get install docker-ce -y
+
+Next Step is to - INSTALL KUBERNETES:
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+
+echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+Finally, update the repository and install Kubernetes with the following command:
+
+apt-get update -y && apt-get install kubelet kubeadm kubectl -y
+kubeadm init --apiserver-advertise-address=192.168.1.8 --pod-network-cidr=192.168.0.0/16

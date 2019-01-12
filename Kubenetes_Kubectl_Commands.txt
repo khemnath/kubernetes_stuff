@@ -1,4 +1,4 @@
-## Kubernetes COmmand
+## Kubernetes Command
 
 Kubernetes manifests can be defined in json or yaml. The file extension .yaml, .yml, and .json can be used.
 
@@ -44,3 +44,7 @@ kubectl describe pods my-pod
 
 # List Services Sorted by Name
 kubectl get services --sort-by=.metadata.name
+
+# Scale the replicas, this will scale to 2 pods
+kubectl scale --replicas=2 deployment/nginx-deployment  // nginx-deployment is deployment name
+

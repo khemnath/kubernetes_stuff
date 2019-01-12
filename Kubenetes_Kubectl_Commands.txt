@@ -1,4 +1,4 @@
-## Kubernetes COmmand
+## Kubernetes Command
 
 Kubernetes manifests can be defined in json or yaml. The file extension .yaml, .yml, and .json can be used.
 
